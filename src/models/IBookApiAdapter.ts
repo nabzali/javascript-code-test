@@ -1,6 +1,7 @@
 import { Book } from "./Book";
 
 export interface BookApiAdapter {
-  getUrl(queryParams: { author: string; limit: number }): string
+  getUrlAuthor(queryParams: { author: string; limit: number }): string
+  getUrlPublisher(queryParams: { publisher: string; limit: number }): string;
   transform(data: unknown): Book[];
 }

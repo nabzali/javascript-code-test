@@ -2,7 +2,14 @@ import { Book } from "../models/Book";
 import { BookApiAdapter } from "../models/IBookApiAdapter";
 
 export class GoogleBooksAdapter implements BookApiAdapter {
-  getUrl({ author, limit }: { author: string; limit: number }): string {
+
+  getUrlPublisher(queryParams: { publisher: string; limit: number }): string {
+    const { publisher, limit } = queryParams;
+    const encodedPublisher = encodeURIComponent(publisher);
+    return `https://www.googleapis.com/books/v1/volumes?q=inpublisher:${encodedPublisher}&maxResults=${limit}`;
+  }
+
+  getUrlAuthor({ author, limit }: { author: string; limit: number }): string {
     const encodedAuthor = encodeURIComponent(author);
     return `https://www.googleapis.com/books/v1/volumes?q=inauthor:${encodedAuthor}&maxResults=${limit}`;
   }
