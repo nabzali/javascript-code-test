@@ -1,7 +1,7 @@
 import { config } from "../config";
 import { BookSearchApiClient } from "./clients/BookSearchApiClient";
 import { BookApiAdapterFactory } from "./BookApiAdapterFactory";
-const { provider, author, limit } = config;
+const { chosenApi, author, limit } = config;
 
 /**
  * Example client to demonstrate usage of the BookSearchApiClient with different adapters.
@@ -9,9 +9,9 @@ const { provider, author, limit } = config;
  */
 async function main() {
   try {
-    console.log(`Using Book API Provider: ${provider}`);
+    console.log(`Using Book API Provider: ${chosenApi}`);
 
-    const adapter = BookApiAdapterFactory.getAdapter(provider);
+    const adapter = BookApiAdapterFactory.getAdapter(chosenApi);
     const client = new BookSearchApiClient(adapter);
 
     const books = await client.getBooksByAuthor(author, limit);
