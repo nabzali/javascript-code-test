@@ -1,17 +1,15 @@
 import { Book } from "../models/Book";
-import { BookApiAdapter } from "../models/BookApiAdapter";
+import { BookApiAdapter } from "../models/IBookApiAdapter";
 
 export class BookSearchApiClient {
-  private baseUrl: string;
   private adapter: BookApiAdapter;
 
-  constructor(adapter: BookApiAdapter, baseUrl: string = "https://openlibrary.org") {
+  constructor(adapter: BookApiAdapter) {
     this.adapter = adapter;
-    this.baseUrl = baseUrl;
   }
 
   async getBooksByAuthor(author: string, limit = 10): Promise<Book[]> {
-    const url = `${this.baseUrl}/search.json?author=${encodeURIComponent(author)}&limit=${limit}`;
+    const url = this.adapter.getUrl({ author, limit });
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -21,6 +19,4 @@ export class BookSearchApiClient {
     const data = await response.json();
     return this.adapter.transform(data);
   }
-
-  // Additional methods could be added here: getBooksByPublisher(), getBooksByYear(), etc.
 }

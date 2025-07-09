@@ -1,7 +1,11 @@
 import { Book } from "../models/Book";
-import { BookApiAdapter } from "../models/BookApiAdapter";
+import { BookApiAdapter } from "../models/IBookApiAdapter";
 
 export class OpenLibraryAdapter implements BookApiAdapter {
+  getUrl({ author, limit }: { author: string; limit: number }): string {
+    return `https://openlibrary.org/search.json?author=${encodeURIComponent(author)}&limit=${limit}`;
+  }
+
   transform(data: any): Book[] {
     return data.docs.map((book: any) => ({
       title: book.title,
@@ -12,3 +16,4 @@ export class OpenLibraryAdapter implements BookApiAdapter {
     }));
   }
 }
+
