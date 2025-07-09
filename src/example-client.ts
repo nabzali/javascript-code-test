@@ -1,6 +1,6 @@
 import { config } from "../config";
 import { BookSearchApiClient } from "./clients/BookSearchApiClient";
-import { BookApiAdapterFactory } from "./BookApiAdapterFactory";
+import { BookApiAdapterFactory } from "./factories/BookApiAdapterFactory";
 const { chosenApi, author, limit } = config;
 
 /**
