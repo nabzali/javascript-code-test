@@ -1,6 +1,6 @@
-import { BookApiAdapter } from "./models/IBookApiAdapter";
-import { OpenLibraryAdapter } from "./adapters/OpenLibraryAdapter";
-import { GoogleBooksAdapter } from "./adapters/GoogleBooksAdapter";
+import { BookApiAdapter } from "../models/IBookApiAdapter";
+import { OpenLibraryAdapter } from "../adapters/OpenLibraryAdapter";
+import { GoogleBooksAdapter } from "../adapters/GoogleBooksAdapter";
 
 // Add new APIs here and create Adapter Classes
 // All adapters use the BookApiAdapter interface
