@@ -2,16 +2,17 @@ import { Book } from "../models/Book";
 import { BookApiAdapter } from "../models/IBookApiAdapter";
 
 export class GoogleBooksAdapter implements BookApiAdapter {
+  private buildQuery(field: string, value: string, limit: number): string {
+    const encoded = encodeURIComponent(value);
+    return `https://www.googleapis.com/books/v1/volumes?q=${field}:${encoded}&maxResults=${limit}`;
+  }
 
-  getUrlPublisher(queryParams: { publisher: string; limit: number }): string {
-    const { publisher, limit } = queryParams;
-    const encodedPublisher = encodeURIComponent(publisher);
-    return `https://www.googleapis.com/books/v1/volumes?q=inpublisher:${encodedPublisher}&maxResults=${limit}`;
+  getUrlPublisher({ publisher, limit }: { publisher: string; limit: number }): string {
+    return this.buildQuery("inpublisher", publisher, limit);
   }
 
   getUrlAuthor({ author, limit }: { author: string; limit: number }): string {
-    const encodedAuthor = encodeURIComponent(author);
-    return `https://www.googleapis.com/books/v1/volumes?q=inauthor:${encodedAuthor}&maxResults=${limit}`;
+    return this.buildQuery("inauthor", author, limit);
   }
 
   transform(data: any): Book[] {
@@ -19,7 +20,6 @@ export class GoogleBooksAdapter implements BookApiAdapter {
 
     return data.items.map((item: any) => {
       const volume = item.volumeInfo;
-
       return {
         title: volume.title || "Unknown Title",
         author: (volume.authors && volume.authors[0]) || "Unknown Author",
@@ -36,3 +36,4 @@ export class GoogleBooksAdapter implements BookApiAdapter {
     return isbn13?.identifier || isbn10?.identifier || "N/A";
   }
 }
+

@@ -2,15 +2,18 @@ import { Book } from "../models/Book";
 import { BookApiAdapter } from "../models/IBookApiAdapter";
 
 export class OpenLibraryAdapter implements BookApiAdapter {
+  private buildQuery(field: string, value: string): string {
+    return encodeURIComponent(`${field}:${value}`);
+  }
 
-  getUrlPublisher(queryParams: { publisher: string; limit: number }): string {
-    const { publisher, limit } = queryParams;
-    const encoded = encodeURIComponent(`publisher:${publisher}`);
-    return `https://openlibrary.org/search.json?q=${encoded}&limit=${limit}`;
+  getUrlPublisher({ publisher, limit }: { publisher: string; limit: number }): string {
+    const query = this.buildQuery("publisher", publisher);
+    return `https://openlibrary.org/search.json?q=${query}&limit=${limit}`;
   }
 
   getUrlAuthor({ author, limit }: { author: string; limit: number }): string {
-    return `https://openlibrary.org/search.json?author=${encodeURIComponent(author)}&limit=${limit}`;
+    const query = encodeURIComponent(author);
+    return `https://openlibrary.org/search.json?author=${query}&limit=${limit}`;
   }
 
   transform(data: any): Book[] {
