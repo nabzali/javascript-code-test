@@ -66,7 +66,7 @@ This project uses jest for testing. There are two tests, one which covers respon
 
 Simply run the command below to run tests
 ```
-npm test
+npm run test
 ```
 
 
