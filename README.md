@@ -59,13 +59,13 @@ Originally developed as a refactoring exercise for a JavaScript code test, this 
 2. Install dependencies:
    ```npm install```
 
-3. Set up environment variables
-   - You may edit the .env file to edit these configurations
+3. Set up environment variables. You may edit the ```.env``` file to edit these configurations
 
-5. Usage
+## Usage
+
    ```ts-node src/example-client.ts```
 
-- Sample Output:
+Sample Output:
 
 ```
 [
@@ -80,7 +80,7 @@ Originally developed as a refactoring exercise for a JavaScript code test, this 
 ]
 ```
 
-5. Testing
+## Testing
 This project uses jest for testing. There are two tests, one which covers response formats for different API usage, and the other which covers error handling
 
 Simply run the command below to run tests
@@ -89,7 +89,7 @@ npm test
 ```
 
 
-6. Adding New Book APIs
+## Adding New Book APIs
 This project uses the Adapter design pattern to support multiple book data sources.
 
 To add a new API:
@@ -108,13 +108,11 @@ export class MyNewBookAdapter implements IBookApiAdapter {
 }
 ```
 
-7. 📦 Available Adapters
-| Adapter      | Source                                        | Notes                              |
-| ------------ | --------------------------------------------- | ---------------------------------- |
-| OpenLibrary  | `https://openlibrary.org`                     | Supports author & publisher search |
-| Google Books | `https://www.googleapis.com/books/v1/volumes` | Requires Google query syntax       |
+## 📦 Available Adapters
+- OpenLibrary  | `https://openlibrary.org`
+- Google Books | `https://www.googleapis.com/books/v1/volumes`
 
-8. 🧠 Extending Search Queries
+## 🧠 Extending Search Queries
 New query types (e.g. search by ISBN or publication year) can be supported by:
 - Adding new methods in IBookApiAdapter (e.g. getUrlIsbn)
 - Implementing the method in each adapter (if supported)
