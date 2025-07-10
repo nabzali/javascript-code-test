@@ -11,7 +11,7 @@ Things you will be asked about:
 3. How would you implement different query types for example: by publisher, by year published etc
 4. How your code would be tested
 
----------------------------
+---
 
 # Solution - Book Search API Client
 
@@ -27,25 +27,6 @@ Originally developed as a refactoring exercise for a JavaScript code test, this 
 - Extensible via the Adapter pattern
 - Fully type-safe with TypeScript
 - Includes unit tests with Jest
-
----
-
-## 📁 Project Structure
-
-.
-├── src/
-│ ├── adapters/ # API-specific adapters (OpenLibrary, GoogleBooks)
-│ ├── clients/ # Main BookSearchApiClient class
-│ ├── models/ # Shared interfaces and data types
-│ └── example-client.ts # Entry point showing usage
-├── tests/ # Jest test suites
-├── .env # Environment variables (use .env.example in production)
-├── jest.config.js
-├── tsconfig.json
-├── package.json
-└── README.md
-
----
 
 ## ⚙️ Setup
 
