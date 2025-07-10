@@ -59,10 +59,11 @@ Originally developed as a refactoring exercise for a JavaScript code test, this 
 2. Install dependencies:
    ```npm install```
 
-3. Set up environment variables. You may edit the .env file to edit these configurations
+3. Set up environment variables
+   - You may edit the .env file to edit these configurations
 
-4. Usage
-   ```ts-node src/example-client.ts
+5. Usage
+   ```ts-node src/example-client.ts```
 
 Sample Output:
 
@@ -79,5 +80,8 @@ Sample Output:
 ]
 ```
 
-5. Testing.
-npm test
+5. Testing
+   - This project uses jest for testing. There are two tests, one which covers response formats for different API usage, and the other which covers error handling
+```npm test```
+
+
