@@ -13,11 +13,11 @@ Things you will be asked about:
 
 ---
 
-# Solution - Book Search API Client
+# Solution
 
 A modular, extensible, and testable TypeScript client for fetching and normalizing book data from multiple book seller APIs.
 
-Originally developed as a refactoring exercise for a JavaScript code test, this project replaces a legacy implementation (`example-client.js`) with a production-ready TypeScript solution using the Adapter design pattern and support for multiple providers.
+Originally developed as a refactoring exercise for a JavaScript code test, this project replaces a legacy implementation (`example-client.js`) with a TypeScript solution using the Adapter design pattern and support for multiple providers.
 
 ## 🔍 Features
 
@@ -25,7 +25,7 @@ Originally developed as a refactoring exercise for a JavaScript code test, this 
 - Search by author or publisher
 - Unified data format across different APIs
 - Extensible via the Adapter pattern
-- Fully type-safe with TypeScript
+- Type-safety with TypeScript
 - Includes unit tests with Jest
 
 ## ⚙️ Setup
